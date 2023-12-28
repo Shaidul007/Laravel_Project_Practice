@@ -59,9 +59,8 @@
         }
 
         //through object backend using axios
-        showLoader();
-
-       let res= await axios.post('userRegistration', PostObject)
+       showLoader();
+       let res= await axios.post('/userRegistration', PostObject)
        hideLoader();
 
        //check res(response) are working?

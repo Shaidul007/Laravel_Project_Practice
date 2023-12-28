@@ -16,3 +16,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    // get user values from data using getElementById('firstName').value
+    async function Save() {
+        let email=document.getElementById('email').value;
+        let password=document.getElementById('password').value;
+
+        //through object
+        let PostObj={"email":email, "password":password}
+        //through object backend using axios
+        showLoader();
+        let res=await axios.post("/userLogin", PostObj)
+        hideLoader();
+
+         //check res(response) are working?
+         if(res.data['status']==="success"){
+            alert(res.data['message']);
+            window.location.href="/Profile";
+        }else {
+            alert(res.data['message'])
+        }
+    }
+</script>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\TokenVerificationMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\UserController;
 //pages route
 Route::view('/Registration', 'pages.auth.registration-page');
 Route::view('/Login', 'pages.auth.login-page');
+Route::view('/Profile','pages.dashboard.profile-page')->middleware([TokenVerificationMiddleware::class]);
 
 
 
@@ -23,3 +25,5 @@ Route::view('/Login', 'pages.auth.login-page');
 //backend route
 Route::post("/userRegistration",[UserController::class,'userRegistration']);
 Route::post("/userLogin",[UserController::class,'userLogin']);
+Route::get("/userProfile",[UserController::class,'userProfile'])->middleware([TokenVerificationMiddleware::class]);
+Route::get("/userLogout",[UserController::class,'userLogout'])->middleware([TokenVerificationMiddleware::class]);

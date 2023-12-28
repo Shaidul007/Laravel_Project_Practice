@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helper\JWTHelper;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,15 @@ class TokenVerificationMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        $token=$request->cookie('token');
+        $result=JWTHelper::DecodeToken($token);
+        if($result==="unauthorized"){
+            return  redirect('/Login');
+        }else{
+            $request->headers->set('email',$result->userEmail);
+            $request->headers->set('id',$result->userID);
+            return $next($request);
+        }
     }
 }
+// 1.28
