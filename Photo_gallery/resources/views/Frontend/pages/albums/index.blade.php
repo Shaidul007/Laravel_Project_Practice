@@ -19,7 +19,7 @@
                                     <p class="card-text">{{ $album->description }}</p>
                                 </div>
                                 <div class="card-body d-flex justify-content-between">
-                                    <a href="" class="card-link btn btn-success">View</a>
+                                    <a href="{{ route('album.show', $album->id) }}" class="card-link btn btn-success">View</a>
                                     <form action="" method="POST">
                                         @csrf
                                         @method('DELETE')

@@ -1,4 +1,4 @@
-{{-- @include('Frontend.layouts.app')
+@include('Frontend.layouts.app')
 
 <div class="card ">
     <div class="card-header d-flex justify-content-end">
@@ -26,4 +26,4 @@
         </div>
       @endforeach
       </div>
-    </div> --}}
+    </div>
