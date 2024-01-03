@@ -2,58 +2,57 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 m-auto offset-lg-3">
-               <div class="personal_info-form">
+            <div class="col-lg-9 m-auto offset-lg-1">
+               <div class="displaing-user">
                 <div class="card">
                     <div class="card-header">
                       Personal Info
                     </div>
-                    <div class="card-body">
-                      @foreach ($data as $data)
-                          
-                      
-                        <form class="row g-3" method="POST" action="{{ route('personal-info.store') }}" enctype="multipart/form-data">
-                            <div class="col-md-6">
-                              <label for="main_name" class="form-label" >Name</label>
-                              <input value="{{ $data->name }}" type="text" class="form-control" id="main_name">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="designation" class="form-label">Designation</label>
-                              <input value="{{ $data->designation }}" type="text" class="form-control" id="designation">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="hero_img" class="form-label">Hero Image</label>
-                              <input value="{{ $data->hero_img }}" type="file" class="form-control" id="hero_img">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="birthday" class="form-label">Birthday</label>
-                              <input value="{{ $data->birthday }}" type="text" class="form-control" id="birthday">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="phone" class="form-label">Phone</label>
-                              <input value="{{ $data->phone }}" type="number" class="form-control" id="phone">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="email" class="form-label">Email</label>
-                              <input value="{{ $data->email }}" type="email" class="form-control" id="email">
-                            </div>
-                            <div class="col-12">
-                              <label for="inputAddress" class="form-label">Address</label>
-                              <input value="{{ $data->address }}" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="language" class="form-label">Language</label>
-                              <input value="{{ $data->language }}" type="text" class="form-control" id="language">
-                            </div>
-                            <div class="col-md-6">
-                              <label for="freelance" class="form-label">Freelance</label>
-                              <input value="{{ $data->freelance }}" type="text" class="form-control" id="freelance">
-                            </div>
-                            <div class="col-12">
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                          </form>
-                          @endforeach
+                    <div class="display-info">
+                        <table class="table table-bordered table-gray">
+                            <thead>
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Acton</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                @foreach ($data as $data)
+                              <tr>
+                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->email }}</td>
+                                <td>{{ $data->phone }}</td>
+                                <td>{{ $data->address }}</td>
+                                <td class="d-flex gap-2">
+                                    <div class="view-btn">
+                                        {{-- view button --}}
+                                     <a href="{{ route('show', $data->id) }}" class="btn btn-success btn-sm">View</a>
+                                    </div>
+     
+                                    <div class="edit-btn">
+                                      {{-- edit button --}}
+                                     <a href="{{ route('edit', $data->id) }}" class="btn btn-success btn-sm">Edit</a>
+     
+                                    </div>
+                                    
+                                   <div class="delete-btn">
+                                     {{-- delete button --}}
+                                     <form action="{{ route('destroy', $data->id) }}" method="POST">
+                                       @csrf
+                                       @method('DELETE')
+                                       <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                   </form>
+                                   
+                                   </div>    
+                                </td>
+                              </tr>
+                              
+                              @endforeach
+                            </tbody>
+                          </table>
                     </div>
                   </div>
                </div>

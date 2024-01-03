@@ -16,7 +16,8 @@ class PersonalInfoSeeder extends Seeder
         $admin = [
             'name' => 'Shaidul islam',
             'designation' => 'Laravel Developer',
-            'hero_img'=> 'hero.png',
+            'image'=> 'hero.png',
+            'title' => 'Laravel Developer',
             'birthday' => '2022-01-01',
             'phone' => '01711111111',
             'email' => 'xG5tW@example.com',

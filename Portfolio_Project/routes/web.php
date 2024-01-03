@@ -25,5 +25,10 @@ Route::get('/dashboard', function () {
 
 
 //route for backend index page 
-Route::resource('personal-info', PersonalInfoController::class);
-Route::resource('personal-info', PersonalInfoController::class);
+Route::get('/personal-info', [PersonalInfoController::class, 'index'])->name('personal-info');
+Route::get('/personal-info/create', [PersonalInfoController::class, 'create'])->name('create');
+Route::post('/personal-info', [PersonalInfoController::class, 'store'])->name('store');
+Route::get('/personal-info/{id}', [PersonalInfoController::class, 'show'])->name('show');
+Route::get('/personal-info/{id}/edit', [PersonalInfoController::class, 'edit'])->name('edit');
+Route::post('/personal-info/{id}', [PersonalInfoController::class, 'update'])->name('update');
+Route::delete('/personal-info/{id}', [PersonalInfoController::class, 'destroy'])->name('destroy');

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PersonalInfo extends Model
 {
     use HasFactory;
-    protected $fillable=['name', 'description', 'hero_img','birthday','phone','email','address','language','freelance'];
+    protected $fillable=['name', 'description', 'image','title','birthday','phone','email','address','language','freelance'];
 }
